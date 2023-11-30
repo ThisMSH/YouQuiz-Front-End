@@ -1,0 +1,3 @@
+.required {
+    @apply after:content-['*'] after:text-red-600 after:dark:text-red-400;
+}

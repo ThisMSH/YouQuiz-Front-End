@@ -1,0 +1,30 @@
+<div class="flex flex-col gap-2">
+    <div
+        class="p-float-label"
+        [ngClass]="{
+            'p-input-icon-left': iconPosition === 'left',
+            'p-input-icon-right': iconPosition === 'right'
+        }"
+    >
+        <i *ngIf="icon" [class]="icon"></i>
+        <input
+            #defaultInput
+            pInputText
+            class="w-full"
+            [id]="inputId"
+            [formControl]="control()"
+            [required]="isRequired()"
+            (blur)="onBlur()"
+        />
+        <label [htmlFor]="inputId" [ngClass]="{ required: isRequired() }">
+            {{ label }}
+        </label>
+    </div>
+    <div #errorsContainer class="hidden" *ngIf="errors && control().invalid">
+        <small
+            *ngFor="let err of control().errors | keyvalue"
+            class="block text-red-600 dark:text-red-400"
+            >{{ errors[err.key] }}</small
+        >
+    </div>
+</div>

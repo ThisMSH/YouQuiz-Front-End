@@ -1,0 +1,21 @@
+<div class="flex flex-col gap-2">
+    <div
+        class="p-float-label"
+        [ngClass]="{
+            'p-input-icon-left': iconPosition === 'left',
+            'p-input-icon-right': iconPosition === 'right'
+        }"
+    >
+        <i *ngIf="icon" [class]="icon"></i>
+        <input
+            pInputText
+            class="w-full"
+            [id]="inputId"
+            [(ngModel)]="bindVal"
+            (ngModelChange)="onBindValChange()"
+        />
+        <label [htmlFor]="inputId">
+            {{ label }}
+        </label>
+    </div>
+</div>

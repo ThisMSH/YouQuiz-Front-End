@@ -1,0 +1,55 @@
+<div>
+    <div>
+        question (search string), type (select string), level(select number),
+        subject(select number), sort(select sortBy & sortOrder)
+    </div>
+    <div
+        class="p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl"
+    >
+        <div class="flex justify-between items-center">
+            <div>
+                <button type="button">Filters</button>
+            </div>
+            <div>
+                <app-two-way-input-module
+                    inputId="search-question"
+                    label="Search"
+                    iconPosition="right"
+                    icon="pi pi-search"
+                ></app-two-way-input-module>
+            </div>
+            <div>
+                <button type="button">Add question</button>
+            </div>
+        </div>
+        <div>test</div>
+    </div>
+    <div
+        class="grid grid-cols-2 gap-2 p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl"
+    >
+        <div class="py-2 px-3 flex items-center gap-3 border border-zinc-200 dark:border-zinc-700 rounded">
+            <div class="group flex-shrink-0 w-56 h-full border border-zinc-300 dark:border-zinc-600 rounded overflow-hidden">
+                <img
+                    class="w-full h-full object-cover transition-all duration-300 group-hover:scale-125 group-hover:rotate-12"
+                    src="https://www.saga.co.uk/contentlibrary/saga/publishing/verticals/entertainment/celebrities/quizshutterstock_1538488850.jpg"
+                    alt="Image"
+                />
+            </div>
+            <div>
+                <h3 title="" class="font-semibold text-xl line-clamp-2">Question title or the question itself, it might be a very long question tho?</h3>
+                <div class="mt-2 flex justify-between items-center">
+                    <div class="text-sm font-light">
+                        <p><span class="font-medium">Type: </span> Multi</p>
+                        <p><span class="font-medium">Level: </span> Hard very hard</p>
+                        <p><span class="font-medium">Subject: </span> Science</p>
+                    </div>
+                    <div>
+                        <a routerLink=" ">Link here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-green-300"></div>
+        <div class="bg-green-300"></div>
+    </div>
+</div>

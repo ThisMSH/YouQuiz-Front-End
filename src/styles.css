@@ -1,5 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-@tailwind base;
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+    /* border-radius: 10px; */
+    @apply w-2 h-2;
+}
+
+*::-webkit-scrollbar-track {
+    /* @apply rounded-md; */
+}
+
+*::-webkit-scrollbar-thumb {
+    /* border-radius: 10px; */
+    @apply bg-indigo-400;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    @apply bg-indigo-600;
+}
+
+*::selection {
+    @apply text-white bg-indigo-800;
+}
+
+.dark *::selection {
+    @apply text-black bg-indigo-300
+}
+
+@import url('tailwindcss/base.css') layer(tw-base);
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
+
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
