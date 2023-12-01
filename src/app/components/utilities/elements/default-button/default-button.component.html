@@ -1,1 +1,15 @@
-<p>button component</p>
+<p-button
+    class="child:border child:border-zinc-300 child:bg-gradient-to-br child:from-sky-500 child:via-indigo-600 child:to-sky-500 child:bg-[length:200%_200%] child:bg-left-top child:transition-all child:duration-300 child-hover:bg-right-bottom child-hover:shadow child-hover:shadow-zinc-800 child-hover:dark:shadow-zinc-300"
+    [ngClass]="customClass"
+    [label]="label"
+    [type]="type"
+    [icon]="icon"
+    [iconPos]="iconPosition"
+    [loading]="loading"
+    [loadingIcon]="loadingIcon"
+    [disabled]="disabled"
+    [raised]="raised"
+    [rounded]="rounded"
+    [size]="size"
+    (onClick)="onClick()"
+></p-button>

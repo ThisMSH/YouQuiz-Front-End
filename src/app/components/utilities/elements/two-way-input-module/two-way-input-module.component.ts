@@ -1,15 +1,9 @@
 import {
-    AfterViewInit,
     Component,
-    ElementRef,
     EventEmitter,
     Input,
     Output,
-    ViewChild,
-    forwardRef,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ControlValueAccessorDirective } from 'src/app/directives/control-value-accessor/control-value-accessor.directive';
 import { IconPositionType, InputType } from 'src/app/types/types';
 
 @Component({

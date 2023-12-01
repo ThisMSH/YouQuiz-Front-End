@@ -31,6 +31,8 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { ControlValueAccessorDirective } from './directives/control-value-accessor/control-value-accessor.directive';
 import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
 import { TwoWayInputModuleComponent } from './components/utilities/elements/two-way-input-module/two-way-input-module.component';
 
 @NgModule({
@@ -66,8 +68,10 @@ import { TwoWayInputModuleComponent } from './components/utilities/elements/two-
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
+        HttpClientModule,
         InputTextModule,
-        HttpClientModule
+        ButtonModule,
+        RippleModule,
     ],
     providers: [
         {
