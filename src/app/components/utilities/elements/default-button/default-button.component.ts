@@ -18,7 +18,7 @@ export class DefaultButtonComponent {
     @Input() raised: boolean = false;
     @Input() rounded: boolean = false;
     @Input() size: ButtonSize = undefined;
-    @Output() onClickEvent = new EventEmitter<void>();
+    @Output() onClickEvent = new EventEmitter<MouseEvent>();
 
     onClick(): void {
         this.onClickEvent.emit();
