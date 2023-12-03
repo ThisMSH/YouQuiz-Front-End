@@ -25,59 +25,14 @@
         <div>test</div>
     </div>
     <div
-        class="grid grid-cols-1 gap-2 p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl"
+        class="grid grid-cols-2 gap-3 p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl"
     >
-        <div
-            class="py-2 px-3 bg-indigo-100 dark:bg-indigo-950 flex items-center gap-3 border border-zinc-200 dark:border-zinc-700 rounded"
-        >
-            <div
-                class="group flex-shrink-0 w-56 h-full border border-zinc-300 dark:border-zinc-600 rounded overflow-hidden"
-            >
-                <img
-                    class="w-full h-full object-cover transition-all duration-300 group-hover:scale-125 group-hover:rotate-12"
-                    src="https://www.saga.co.uk/contentlibrary/saga/publishing/verticals/entertainment/celebrities/quizshutterstock_1538488850.jpg"
-                    alt="Image"
-                />
-            </div>
-            <div>
-                <h3
-                    title=""
-                    class="font-semibold text-xl line-clamp-2 text-indigo-900 dark:text-indigo-100"
-                >
-                    Question title or the question itself, it might be a very
-                    long question tho?
-                </h3>
-                <div class="mt-2 flex justify-between items-center">
-                    <div class="text-sm font-light">
-                        <p>
-                            <span
-                                class="font-medium text-sky-800 dark:text-sky-200"
-                                >Type:
-                            </span>
-                            Multi
-                        </p>
-                        <p>
-                            <span
-                                class="font-medium text-sky-800 dark:text-sky-200"
-                                >Level:
-                            </span>
-                            Hard very hard
-                        </p>
-                        <p>
-                            <span
-                                class="font-medium text-sky-800 dark:text-sky-200"
-                                >Subject:
-                            </span>
-                            Science
-                        </p>
-                    </div>
-                    <div>
-                        <app-default-button
-                            label="Details"
-                        ></app-default-button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <ng-container *ngIf="questions(); else questionsLoading">
+            <app-question-card
+                *ngFor="let qs of questions()?.data?.content"
+                [questionObj]="qs"
+            ></app-question-card>
+        </ng-container>
+        <ng-template #questionsLoading>Questions Loading</ng-template>
     </div>
 </div>

@@ -1,6 +1,6 @@
 export interface Response<T> {
     data?: T;
-    cause?: any;
+    cause?: object;
     message: string;
     status: number;
 }

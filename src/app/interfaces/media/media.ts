@@ -5,8 +5,7 @@ export interface Media {
     title: string;
     url: string;
     type: MediaType;
-    'created-at': Date;
-    'updated-at': Date;
+    createdAt: Date;
+    updatedAt: Date;
     questionId?: number | null;
-    'question-id'?: number | null;
 }

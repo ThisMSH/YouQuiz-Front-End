@@ -1,1 +1,142 @@
-<p>question-info works!</p>
+<app-info-page-container>
+    <section class="relative col-span-2">
+        <app-head-container title="Question Details">
+            <button class="p-2 bg-slate-400 rounded-md">...</button>
+        </app-head-container>
+        <app-body-container>
+            <h3
+                class="mb-3 text-xl font-medium text-indigo-900 dark:text-indigo-200"
+            >
+                <span class="font-bold">Q: </span
+                >{{ question()?.data?.question }}
+            </h3>
+            <div class="mb-3 grid grid-cols-2 gap-x-3 gap-y-1">
+                <div class="col-span-2">
+                    <h6 class="text-sky-800 dark:text-sky-200">Description:</h6>
+                    <p>
+                        {{
+                            question()?.data?.description !== ""
+                                ? question()?.data?.description
+                                : "No description."
+                        }}
+                    </p>
+                </div>
+                <p>
+                    <span class="text-sky-800 dark:text-sky-200"
+                        >Subject:
+                    </span>
+                    <a
+                        [routerLink]="[
+                            '/dashboard/subjects/' +
+                                question()?.data?.subject?.id
+                        ]"
+                        >{{ question()?.data?.subject?.title }}</a
+                    >
+                </p>
+                <p>
+                    <span class="text-sky-800 dark:text-sky-200">Level: </span>
+                    <a
+                        [routerLink]="[
+                            '/dashboard/levels/' + question()?.data?.level?.id
+                        ]"
+                        >{{ question()?.data?.level?.title }}</a
+                    >
+                </p>
+                <p>
+                    <span class="text-sky-800 dark:text-sky-200"
+                        >Answers count:
+                    </span>
+                    {{ question()?.data?.answersCount }}
+                </p>
+                <p>
+                    <span class="text-sky-800 dark:text-sky-200"
+                        >Correct answers count:
+                    </span>
+                    {{ question()?.data?.correctAnswersCount }}
+                </p>
+                <p>
+                    <span class="text-sky-800 dark:text-sky-200">Type: </span>
+                    <span class="capitalize">{{
+                        question()?.data?.type | lowercase
+                    }}</span>
+                </p>
+            </div>
+            <div
+                class="text-xs text-zinc-700 dark:text-zinc-300 flex items-center gap-4"
+            >
+                <p>
+                    <span class="font-medium">Created at:</span>
+                    {{ question()?.data?.createdAt | date: "dd-MM-yyyy hh:mm" }}
+                </p>
+                <p>
+                    <span class="font-medium">Updated at:</span>
+                    {{ question()?.data?.updatedAt | date: "dd-MM-yyyy hh:mm" }}
+                </p>
+            </div>
+        </app-body-container>
+    </section>
+    <section>
+        <app-head-container
+            title="Answers"
+            [count]="question()?.data?.answersCount"
+        >
+            <button class="p-2 bg-slate-400 rounded-md">...</button>
+        </app-head-container>
+        <app-body-container>
+            <div class="grid grid-cols-1 divide-y divide-zinc-500">
+                <div
+                    *ngFor="
+                        let ans of question()?.data
+                            ?.answerValidationsWithParent;
+                        index as i
+                    "
+                    class="p-2 flex justify-between items-center gap-x-4"
+                >
+                    <p>
+                        <a
+                            class="line-clamp-1"
+                            [routerLink]="[
+                                '/dashboard/answers/' + ans.answer.id
+                            ]"
+                        >
+                            {{ i + 1 }} - {{ ans.answer.answer }}
+                        </a>
+                    </p>
+                    <p-tag
+                        class="flex-shrink-0"
+                        [severity]="ans.points > 0 ? 'success' : 'danger'"
+                        [rounded]="true"
+                    >
+                        <p class="px-2 py-0.5 text-shadow-zinc-900-3">
+                            Points - {{ ans.points }}
+                        </p>
+                    </p-tag>
+                </div>
+            </div>
+        </app-body-container>
+    </section>
+    <section>
+        <app-head-container
+            title="Media"
+            [count]="question()?.data?.medias?.length"
+        >
+            <button class="p-2 bg-slate-400 rounded-md">...</button>
+        </app-head-container>
+        <app-body-container>
+            <div class="grid grid-cols-1 divide-y divide-zinc-500 child:py-3">
+                <ng-container *ngFor="let media of question()?.data?.medias">
+                    <app-video-container *ngIf="media.type === 'VIDEO'"
+                        [url]="media.url"
+                    ></app-video-container>
+                    <app-audio-container *ngIf="media.type === 'AUDIO'"
+                        [url]="media.url"
+                    ></app-audio-container>
+                    <app-image-container *ngIf="media.type === 'IMAGE'"
+                        [url]="media.url"
+                        [alt]="media.title"
+                    ></app-image-container>
+                </ng-container>
+            </div>
+        </app-body-container>
+    </section>
+</app-info-page-container>

@@ -1,0 +1,13 @@
+<div
+    class="relative w-[calc(100%_-_40px)] top-8 left-1/2 px-6 py-3 flex justify-between items-center border border-t-zinc-300 border-l-zinc-300 border-b-zinc-500 border-r-zinc-500 dark:border-t-zinc-500 dark:border-l-zinc-500 dark:border-b-zinc-700 dark:border-r-zinc-700 bg-gradient-to-br from-sky-900 to-indigo-950 rounded-xl -translate-x-1/2"
+>
+    <h2 class="text-xl text-zinc-50 font-semibold">
+        {{ title }}
+        <p-badge
+            *ngIf="count && count > 0"
+            [value]="count.toString()"
+            class="ml-2 child:text-indigo-800 child:bg-indigo-200"
+        ></p-badge>
+    </h2>
+    <ng-content></ng-content>
+</div>

@@ -24,6 +24,13 @@ import { DashboardFooterComponent } from './components/dashboard-footer/dashboar
 import { QuestionInfoComponent } from './views/dashboard/questions/question-info/question-info.component';
 import { QuestionCardComponent } from './components/question-card/question-card.component';
 import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
+import { TwoWayInputModuleComponent } from './components/utilities/elements/two-way-input-module/two-way-input-module.component';
+import { HeadContainerComponent } from './components/utilities/others/head-container/head-container.component';
+import { BodyContainerComponent } from './components/utilities/others/body-container/body-container.component';
+import { InfoPageContainerComponent } from './components/utilities/others/info-page-container/info-page-container.component';
+import { VideoContainerComponent } from './components/video-container/video-container.component';
+import { AudioContainerComponent } from './components/audio-container/audio-container.component';
+import { ImageContainerComponent } from './components/image-container/image-container.component';
 import {
     MAT_FORM_FIELD_DEFAULT_OPTIONS,
     MatFormFieldModule,
@@ -33,7 +40,10 @@ import { ControlValueAccessorDirective } from './directives/control-value-access
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
-import { TwoWayInputModuleComponent } from './components/utilities/elements/two-way-input-module/two-way-input-module.component';
+import { BadgeModule } from 'primeng/badge';
+import { TagModule } from 'primeng/tag';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
     declarations: [
@@ -59,6 +69,12 @@ import { TwoWayInputModuleComponent } from './components/utilities/elements/two-
         DarkModeComponent,
         ControlValueAccessorDirective,
         TwoWayInputModuleComponent,
+        HeadContainerComponent,
+        BodyContainerComponent,
+        InfoPageContainerComponent,
+        VideoContainerComponent,
+        AudioContainerComponent,
+        ImageContainerComponent,
     ],
     imports: [
         BrowserModule,
@@ -72,12 +88,16 @@ import { TwoWayInputModuleComponent } from './components/utilities/elements/two-
         InputTextModule,
         ButtonModule,
         RippleModule,
+        BadgeModule,
+        TagModule,
+        ToastModule,
     ],
     providers: [
         {
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
             useValue: { appearance: 'outline' },
         },
+        MessageService,
     ],
     bootstrap: [AppComponent],
 })

@@ -5,8 +5,6 @@ export interface QuestionRequest {
     question: string,
     description: string,
     type: QuestionType,
-    "level-id"?: number,
-    "subject-id"?: number,
     levelId?: number,
     subjectId?: number,
 }

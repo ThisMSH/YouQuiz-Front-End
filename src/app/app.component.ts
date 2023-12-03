@@ -7,7 +7,7 @@ import { PrimeNGConfig } from 'primeng/api';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-    primengConfig = inject(PrimeNGConfig);
+    private primengConfig = inject(PrimeNGConfig);
 
     ngOnInit(): void {
         this.primengConfig.ripple = true;

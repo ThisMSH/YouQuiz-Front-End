@@ -6,7 +6,48 @@ module.exports = {
     mode: 'jit',
     content: ['./src/**/*.{html,ts}'],
     theme: {
-        extend: {},
+        extend: {
+            dropShadow: {
+                'white-sm': ['0 2px 4px rgb(255 255 255)'],
+                'black-sm': ['0 2px 4px rgb(0 0 0)'],
+                white: [
+                    '0 0px 10px rgb(255 255 255)',
+                    '0 0px 60px rgb(255 255 255)',
+                ],
+                black: ['0 0px 10px rgb(0 0 0)', '0 0px 60px rgb(0 0 0)'],
+            },
+            fontFamily: {
+                poppins: '"Poppins", sans-serif',
+                'black-ops': '"Black Ops One", cursive, sans-serif',
+            },
+            textStroke: {
+                'white-1': '1px rgb(255 255 255)',
+                'white-2': '2px rgb(255 255 255)',
+                'black-1': '1px rgb(0 0 0)',
+                'black-2': '2px rgb(0 0 0)',
+                'zinc-600-0\.5': '.5px rgb(82 82 91)',
+                'zinc-500-0\.5': '.5px rgb(113 113 122)',
+                'zinc-400-0\.5': '.5px rgb(161 161 170)',
+                'zinc-300-0\.5': '.5px rgb(212 212 216)'
+            },
+            textShadow: {
+                'zinc-900-1': '0 0 1px rgb(24 24 27)',
+                'zinc-900-2': '0 0 2px rgb(24 24 27)',
+                'zinc-900-3': '0 0 3px rgb(24 24 27)',
+                'zinc-900-5': '0 0 5px rgb(24 24 27)',
+                'zinc-900-10': '0 0 10px rgb(24 24 27)',
+                'zinc-900-15': '0 0 15px rgb(24 24 27)',
+                'zinc-900-20': '0 0 20px rgb(24 24 27)',
+                'zinc-900-25': '0 0 25px rgb(24 24 27)',
+                'zinc-900-30': '0 0 30px rgb(24 24 27)',
+                'zinc-100-5': '0 0 5px rgb(244 244 245)',
+                'zinc-100-10': '0 0 10px rgb(244 244 245)',
+                'zinc-100-15': '0 0 15px rgb(244 244 245)',
+                'zinc-100-20': '0 0 20px rgb(244 244 245)',
+                'zinc-100-25': '0 0 25px rgb(244 244 245)',
+                'zinc-100-30': '0 0 30px rgb(244 244 245)',
+            }
+        },
     },
     plugins: [
         plugin(function ({ addVariant }) {
@@ -19,5 +60,29 @@ module.exports = {
             addVariant('children', '& *');
             addVariant('children-hover', '& *:hover');
         }),
+        plugin(function ({matchUtilities, theme}) {
+            matchUtilities(
+                {
+                    'text-stroke': (value) => ({
+                        '-webkit-text-stroke': value,
+                    })
+                },
+                { values:
+                    theme('textStroke')
+                }
+            )
+        }),
+        plugin(function ({matchUtilities, theme}) {
+            matchUtilities(
+                {
+                    'text-shadow': (value) => ({
+                        textShadow: value,
+                    })
+                },
+                { values:
+                    theme('textShadow')
+                }
+            )
+        })
     ],
 };

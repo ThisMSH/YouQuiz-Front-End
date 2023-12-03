@@ -6,17 +6,15 @@
 }
 
 *::-webkit-scrollbar {
-    /* border-radius: 10px; */
-    @apply w-2 h-2;
+    @apply w-2 h-2 rounded-full;
 }
 
 *::-webkit-scrollbar-track {
-    /* @apply rounded-md; */
+    @apply rounded-full;
 }
 
 *::-webkit-scrollbar-thumb {
-    /* border-radius: 10px; */
-    @apply bg-indigo-400;
+    @apply bg-indigo-400 rounded-full;
 }
 
 *::-webkit-scrollbar-thumb:hover {

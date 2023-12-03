@@ -5,14 +5,12 @@ export interface Question {
     question: string;
     description: string;
     type: QuestionType;
-    'answers-count': number;
-    'correct-answers-count': number;
-    'created-at': Date;
-    'updated-at': Date;
+    answersCount: number;
+    correctAnswersCount: number;
+    createdAt: Date;
+    updatedAt: Date;
     levelId?: number | null;
     subjectId?: number | null;
-    'level-id'?: number | null;
-    'subject-id'?: number | null;
-    'media-ids'?: number[] | null;
-    'answer-validation-ids'?: number[] | null;
+    mediaIds?: number[] | null;
+    answerValidationIds?: number[] | null;
 }
