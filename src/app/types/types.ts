@@ -13,3 +13,5 @@ export type IconPositionType = '' | 'left' | 'right';
 export type QuestionType = 'SINGLE' | 'MULTI' | 'DIRECT';
 
 export type MediaType = 'IMAGE' | 'VIDEO' | 'AUDIO';
+
+export type TypeOption<T> = { name: string; code: T };

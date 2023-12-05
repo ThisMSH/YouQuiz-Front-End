@@ -1,5 +1,5 @@
 .label {
-    @apply text-black dark:text-white;
+    @apply text-zinc-950 dark:text-zinc-50;
 }
 
 .required {

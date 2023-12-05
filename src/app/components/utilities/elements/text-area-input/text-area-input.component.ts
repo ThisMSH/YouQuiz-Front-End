@@ -1,39 +1,29 @@
-import {
-    AfterViewInit,
-    Component,
-    ElementRef,
-    Input,
-    ViewChild,
-    forwardRef,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ControlValueAccessorDirective } from 'src/app/directives/control-value-accessor/control-value-accessor.directive';
-import { IconPositionType, InputType } from 'src/app/types/types';
+import { InputType } from 'src/app/types/types';
 
 @Component({
-    selector: 'app-default-input',
-    templateUrl: './default-input.component.html',
-    styleUrls: ['./default-input.component.css'],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => DefaultInputComponent),
-            multi: true,
-        },
-    ],
+  selector: 'app-text-area-input',
+  templateUrl: './text-area-input.component.html',
+  styleUrls: ['./text-area-input.component.css'],
+  providers: [
+      {
+          provide: NG_VALUE_ACCESSOR,
+          useExisting: forwardRef(() => TextAreaInputComponent),
+          multi: true,
+      },
+  ],
 })
-export class DefaultInputComponent<T>
-    extends ControlValueAccessorDirective<T>
-    implements AfterViewInit
-{
-    @ViewChild('defaultInput') inputEle!: ElementRef;
+export class TextAreaInputComponent<T>
+extends ControlValueAccessorDirective<T>
+implements AfterViewInit {
+    @ViewChild('defaultTextArea') inputEle!: ElementRef;
     @ViewChild('errorsContainer') errDiv!: ElementRef;
     @ViewChild('labelElement') labelEle!: ElementRef;
     @Input() inputId: string = '';
     @Input() label: string = '';
     @Input() inputType: InputType = 'text';
-    @Input() icon: string = '';
-    @Input() iconPosition: IconPositionType = '';
     @Input() errors: Record<string, string> = {};
 
     onBlur(): void {

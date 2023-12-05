@@ -19,7 +19,116 @@
                 ></app-two-way-input-module>
             </div>
             <div>
-                <button type="button">Add question</button>
+                <button
+                    class="px-6 py-3 bg-zinc-700 text-zinc-50 border rounded-md"
+                    (click)="showDialog()"
+                    type="button"
+                >
+                    Add question
+                </button>
+                <p-dialog
+                    header="Add a new question"
+                    [(visible)]="showModal"
+                    [modal]="true"
+                    [style]="{ width: '50vw', height: '90vh' }"
+                    [draggable]="true"
+                    [resizable]="false"
+                    [dismissableMask]="true"
+                    position="center"
+                    styleClass="child:bg-zinc-100 child:text-zinc-950 child:dark:bg-zinc-800 child:dark:text-zinc-50"
+                >
+                    <form
+                        [formGroup]="questionForm"
+                        (ngSubmit)="submitQuestion()"
+                    >
+                        <div class="mt-2 grid grid-cols-2 gap-3 child:mt-4">
+                            <app-default-input
+                                class="col-span-2"
+                                inputId="question-input"
+                                label="Question:"
+                                formControlName="question"
+                                [errors]="questionErrors.question"
+                            ></app-default-input>
+                            <app-text-area-input
+                                class="col-span-2"
+                                inputId="description-input"
+                                label="Description:"
+                                formControlName="description"
+                                [errors]="questionErrors.description"
+                            ></app-text-area-input>
+                            <app-select-input
+                                inputId="type-input"
+                                label="Type:"
+                                formControlName="type"
+                                [options]="questionTypeOptions"
+                                [errors]="questionErrors.type"
+                            ></app-select-input>
+                            <app-default-input
+                                inputId="level-input"
+                                label="Level:"
+                                formControlName="levelId"
+                                [errors]="questionErrors.levelId"
+                            ></app-default-input>
+                            <app-default-input
+                                inputId="subject-input"
+                                label="Subject:"
+                                formControlName="subjectId"
+                                [errors]="questionErrors.subjectId"
+                            ></app-default-input>
+                            <div class="col-span-2">
+                                <p>Media section:</p>
+                                <button
+                                    type="button"
+                                    (click)="addMedia()"
+                                    class="px-5 py-2 rounded-md bg-black text-sky-300"
+                                >
+                                    Add media
+                                </button>
+                            </div>
+                            <div formArrayName="mediaList">
+                                <div
+                                    *ngFor="
+                                        let media of getMedia.controls;
+                                        index as i
+                                    "
+                                    [formGroupName]="i"
+                                    class="grid grid-cols-2"
+                                >
+                                    <app-default-input
+                                        inputId="media-title-input"
+                                        label="Media title:"
+                                        formControlName="title"
+                                        [errors]="
+                                            questionErrors.mediaList.title
+                                        "
+                                    ></app-default-input>
+                                    <app-select-input
+                                        inputId="media-type-input"
+                                        label="Media type:"
+                                        formControlName="type"
+                                        [options]="mediaTypeOptions"
+                                        [errors]="questionErrors.mediaList.type"
+                                    ></app-select-input>
+                                    <div>
+                                        <input
+                                            type="file"
+                                            formControlName="file"
+                                            id=""
+                                        />
+                                        <button
+                                            type="button"
+                                            (click)="removeMedia(i)"
+                                            class="px-5 py-2 rounded-md bg-red-300 text-red-700"
+                                        >
+                                            remove media
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button>submit</button>
+                    </form>
+                </p-dialog>
             </div>
         </div>
         <div>test</div>

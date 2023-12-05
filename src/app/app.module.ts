@@ -31,6 +31,8 @@ import { InfoPageContainerComponent } from './components/utilities/others/info-p
 import { VideoContainerComponent } from './components/video-container/video-container.component';
 import { AudioContainerComponent } from './components/audio-container/audio-container.component';
 import { ImageContainerComponent } from './components/image-container/image-container.component';
+import { TextAreaInputComponent } from './components/utilities/elements/text-area-input/text-area-input.component';
+import { SelectInputComponent } from './components/utilities/elements/select-input/select-input.component';
 import {
     MAT_FORM_FIELD_DEFAULT_OPTIONS,
     MatFormFieldModule,
@@ -44,6 +46,9 @@ import { BadgeModule } from 'primeng/badge';
 import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
     declarations: [
@@ -75,6 +80,8 @@ import { MessageService } from 'primeng/api';
         VideoContainerComponent,
         AudioContainerComponent,
         ImageContainerComponent,
+        TextAreaInputComponent,
+        SelectInputComponent,
     ],
     imports: [
         BrowserModule,
@@ -91,6 +98,9 @@ import { MessageService } from 'primeng/api';
         BadgeModule,
         TagModule,
         ToastModule,
+        DialogModule,
+        InputTextareaModule,
+        DropdownModule,
     ],
     providers: [
         {

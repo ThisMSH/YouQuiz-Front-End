@@ -125,13 +125,16 @@
         <app-body-container>
             <div class="grid grid-cols-1 divide-y divide-zinc-500 child:py-3">
                 <ng-container *ngFor="let media of question()?.data?.medias">
-                    <app-video-container *ngIf="media.type === 'VIDEO'"
+                    <app-video-container
+                        *ngIf="media.type === 'VIDEO'"
                         [url]="media.url"
                     ></app-video-container>
-                    <app-audio-container *ngIf="media.type === 'AUDIO'"
+                    <app-audio-container
+                        *ngIf="media.type === 'AUDIO'"
                         [url]="media.url"
                     ></app-audio-container>
-                    <app-image-container *ngIf="media.type === 'IMAGE'"
+                    <app-image-container
+                        *ngIf="media.type === 'IMAGE'"
                         [url]="media.url"
                         [alt]="media.title"
                     ></app-image-container>
