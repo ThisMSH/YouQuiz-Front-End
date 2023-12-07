@@ -1,0 +1,3 @@
+.invalid-input {
+    @apply border-red-600 dark:border-red-500;
+}

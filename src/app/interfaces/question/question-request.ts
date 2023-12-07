@@ -8,5 +8,4 @@ export interface QuestionRequest {
     type: QuestionType;
     levelId: number;
     subjectId: number;
-    mediaList: MediaRequest[];
 }

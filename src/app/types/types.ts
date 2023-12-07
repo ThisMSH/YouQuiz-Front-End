@@ -15,3 +15,7 @@ export type QuestionType = 'SINGLE' | 'MULTI' | 'DIRECT';
 export type MediaType = 'IMAGE' | 'VIDEO' | 'AUDIO';
 
 export type TypeOption<T> = { name: string; code: T };
+
+export type SortOrder = 'ASC' | 'DESC';
+
+export type ButtonBgStyle = 'sky' | 'indigo' | 'zinc' | 'red';

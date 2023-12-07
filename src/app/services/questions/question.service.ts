@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { QuestionDTO } from 'src/app/interfaces/question/question-dto';
+import { QuestionRequest } from 'src/app/interfaces/question/question-request';
 import { ListResponse } from 'src/app/interfaces/response/list-response';
 import { Response } from 'src/app/interfaces/response/response';
 import { environment } from 'src/environments/environment.development';
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment.development';
     providedIn: 'root',
 })
 export class QuestionService {
-    http = inject(HttpClient);
+    private http = inject(HttpClient);
     question = signal<QuestionDTO | undefined>(undefined);
     questions = signal<ListResponse<QuestionDTO> | undefined>(undefined);
     url = environment.apiUrl;
@@ -45,9 +46,18 @@ export class QuestionService {
             );
     }
 
-    createQuestion(question: QuestionDTO): Observable<Response<QuestionDTO>> {
+    createQuestion(question: QuestionRequest): Observable<Response<QuestionDTO>> {
         return this.http
             .post<Response<QuestionDTO>>(`${this.url}/questions/add`, question)
-            .pipe(tap((res) => this.question.set(res.data)));
+            .pipe(
+                tap((res) => {
+                    if (res.status !== 201) {
+                        throw new Error(`An error occurred: ${res.message}`);
+                    }
+
+                    this.question.set(res.data);
+                }),
+                catchError((err) => throwError(() => err)),
+            );
     }
 }

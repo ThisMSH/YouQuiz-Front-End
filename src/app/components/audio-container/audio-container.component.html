@@ -1,12 +1,9 @@
 <div class="w-full">
+    <p class="mb-2 text-xl font-medium">
+        {{ title }}
+    </p>
     <audio controls class="w-full">
-        <source
-            [src]="apiUrl + '/medias/get/' + url"
-            type="audio/ogg"
-        />
-        <source
-            [src]="apiUrl + '/medias/get/' + url"
-            type="audio/mpeg"
-        />
+        <source [src]="apiUrl + '/medias/get/' + url" type="audio/ogg" />
+        <source [src]="apiUrl + '/medias/get/' + url" type="audio/mpeg" />
     </audio>
 </div>

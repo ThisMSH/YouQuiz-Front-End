@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ButtonIconPosition, ButtonSize, ButtonType } from 'src/app/types/types';
+import {
+    ButtonBgStyle,
+    ButtonIconPosition,
+    ButtonSize,
+    ButtonType,
+} from 'src/app/types/types';
 
 @Component({
     selector: 'app-default-button',
@@ -7,7 +12,8 @@ import { ButtonIconPosition, ButtonSize, ButtonType } from 'src/app/types/types'
     styleUrls: ['./default-button.component.css'],
 })
 export class DefaultButtonComponent {
-    @Input() customClass!: string | undefined;
+    @Input() customClass: string = '';
+    @Input() bgStyle: ButtonBgStyle = 'sky';
     @Input() label!: string;
     @Input() type: ButtonType = 'submit';
     @Input() icon!: string;
@@ -22,5 +28,20 @@ export class DefaultButtonComponent {
 
     onClick(): void {
         this.onClickEvent.emit();
+    }
+
+    get getClasses(): Record<string, boolean> {
+        let classes: Record<string, boolean> = {
+            sky: this.bgStyle === 'sky',
+            indigo: this.bgStyle === 'indigo',
+            red: this.bgStyle === 'red',
+            zinc: this.bgStyle === 'zinc',
+        };
+
+        this.customClass.split(' ').forEach((c) => {
+            classes[c] = true;
+        });
+
+        return classes;
     }
 }

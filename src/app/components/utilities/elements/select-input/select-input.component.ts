@@ -36,13 +36,13 @@ export class SelectInputComponent<T, A extends string>
     @Input() label: string = '';
     @Input() errors: Record<string, string> = {};
 
-    get optionsObj(): Record<string, string> {
+    get optionsObj(): Record<string, string | number> {
         return this.options.reduce(
             (obj, opt) => {
                 obj[opt.code] = opt.name;
                 return obj;
             },
-            {} as Record<string, string>,
+            {} as Record<string, string | number>,
         );
     }
 

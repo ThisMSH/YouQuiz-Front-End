@@ -1,3 +1,10 @@
 <div class="w-full">
-    <img class="mx-auto object-cover" [src]="apiUrl + '/medias/get/' + url" [alt]="alt" />
+    <p class="mb-2 text-xl font-medium">
+        {{ title }}
+    </p>
+    <img
+        class="mx-auto object-cover"
+        [src]="apiUrl + '/medias/get/' + url"
+        [alt]="title"
+    />
 </div>

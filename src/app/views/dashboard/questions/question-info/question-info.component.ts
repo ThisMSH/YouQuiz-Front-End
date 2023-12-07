@@ -19,10 +19,12 @@ export class QuestionInfoComponent implements OnInit, OnDestroy {
     private paramSub!: Subscription;
     id = signal<number>(0);
     question = signal<Response<QuestionDTO> | null>(null);
+    questionLoading = signal<boolean>(true);
 
-    ngOnInit(): void {
+    getQuestion(): void {
         this.paramSub = this.route.paramMap.subscribe((param) => {
             const id = param.get('id');
+            this.questionLoading.set(true);
 
             if (id != null) {
                 this.id.set(+id);
@@ -49,8 +51,14 @@ export class QuestionInfoComponent implements OnInit, OnDestroy {
                             });
                         }
                     },
+                    complete: () => {
+                        this.questionLoading.set(false);
+                    },
                 });
         });
+    }
+    ngOnInit(): void {
+        this.getQuestion();
     }
 
     ngOnDestroy(): void {

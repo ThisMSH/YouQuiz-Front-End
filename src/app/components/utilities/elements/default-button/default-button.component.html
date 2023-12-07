@@ -1,6 +1,6 @@
 <p-button
-    class="child:border child:border-zinc-300 child:bg-gradient-to-br child:from-sky-500 child:via-indigo-600 child:to-sky-500 child:bg-[length:200%_200%] child:bg-left-top child:transition-all child:duration-300 child-hover:bg-right-bottom child-hover:shadow child-hover:shadow-zinc-800 child-hover:dark:shadow-zinc-300"
-    [ngClass]="customClass"
+    styleClass="border border-zinc-300 bg-gradient-to-br bg-[length:200%_200%] bg-left-top brightness-100 transition-all duration-300 hover:bg-right-bottom hover:shadow hover:shadow-zinc-800 hover:dark:shadow-zinc-300 hover:brightness-110"
+    [ngClass]="getClasses"
     [label]="label"
     [type]="type"
     [icon]="icon"

@@ -1,0 +1,15 @@
+.sky {
+    @apply from-sky-600 via-sky-800 to-sky-600;
+}
+
+.indigo {
+    @apply from-indigo-600 via-indigo-800 to-indigo-600;
+}
+
+.red {
+    @apply from-red-600 via-red-800 to-red-600;
+}
+
+.zinc {
+    @apply from-zinc-600 via-zinc-800 to-zinc-600;
+}

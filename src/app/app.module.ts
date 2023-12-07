@@ -49,6 +49,14 @@ import { MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
+import { SkeletonModule } from 'primeng/skeleton';
+import { CreateQuestionComponent } from './components/modals/create-question/create-question.component';
+import { UpdateQuestionComponent } from './components/modals/update-question/update-question.component';
+import { DeleteQuestionComponent } from './components/modals/delete-question/delete-question.component';
+import { QuestionCardSkeletonComponent } from './components/skeletons/question-card-skeleton/question-card-skeleton.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ModalTemplateComponent } from './components/modals/modal-template/modal-template.component';
+import { FileInputComponent } from './components/utilities/elements/file-input/file-input.component';
 
 @NgModule({
     declarations: [
@@ -82,6 +90,12 @@ import { DropdownModule } from 'primeng/dropdown';
         ImageContainerComponent,
         TextAreaInputComponent,
         SelectInputComponent,
+        CreateQuestionComponent,
+        UpdateQuestionComponent,
+        DeleteQuestionComponent,
+        QuestionCardSkeletonComponent,
+        ModalTemplateComponent,
+        FileInputComponent,
     ],
     imports: [
         BrowserModule,
@@ -101,6 +115,8 @@ import { DropdownModule } from 'primeng/dropdown';
         DialogModule,
         InputTextareaModule,
         DropdownModule,
+        SkeletonModule,
+        ProgressSpinnerModule,
     ],
     providers: [
         {
