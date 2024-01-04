@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ControlValueAccessorDirective } from './directives/control-value-accessor/control-value-accessor.directive';
 import { HomeComponent } from './views/main/home/home.component';
 import { QuestionsComponent } from './views/dashboard/questions/questions.component';
 import { SubjectsComponent } from './views/dashboard/subjects/subjects.component';
@@ -13,32 +14,37 @@ import { AnswersComponent } from './views/dashboard/answers/answers.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { MainComponent } from './views/main/main.component';
-import { DefaultInputComponent } from './components/utilities/elements/default-input/default-input.component';
-import { SideBarButtonComponent } from './components/utilities/elements/side-bar-button/side-bar-button.component';
-import { DefaultButtonComponent } from './components/utilities/elements/default-button/default-button.component';
-import { MainHeaderComponent } from './components/main-header/main-header.component';
-import { MainFooterComponent } from './components/main-footer/main-footer.component';
-import { DashboardSideBarComponent } from './components/dashboard-side-bar/dashboard-side-bar.component';
-import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
-import { DashboardFooterComponent } from './components/dashboard-footer/dashboard-footer.component';
+import { DefaultInputComponent } from './components/elements/default-input/default-input.component';
+import { SideBarButtonComponent } from './components/elements/side-bar-button/side-bar-button.component';
+import { DefaultButtonComponent } from './components/elements/default-button/default-button.component';
+import { MainHeaderComponent } from './components/navbars/main-header/main-header.component';
+import { MainFooterComponent } from './components/navbars/main-footer/main-footer.component';
+import { DashboardSideBarComponent } from './components/navbars/dashboard-side-bar/dashboard-side-bar.component';
+import { DashboardHeaderComponent } from './components/navbars/dashboard-header/dashboard-header.component';
+import { DashboardFooterComponent } from './components/navbars/dashboard-footer/dashboard-footer.component';
 import { QuestionInfoComponent } from './views/dashboard/questions/question-info/question-info.component';
-import { QuestionCardComponent } from './components/question-card/question-card.component';
-import { DarkModeComponent } from './components/dark-mode/dark-mode.component';
-import { TwoWayInputModuleComponent } from './components/utilities/elements/two-way-input-module/two-way-input-module.component';
-import { HeadContainerComponent } from './components/utilities/others/head-container/head-container.component';
-import { BodyContainerComponent } from './components/utilities/others/body-container/body-container.component';
-import { InfoPageContainerComponent } from './components/utilities/others/info-page-container/info-page-container.component';
-import { VideoContainerComponent } from './components/video-container/video-container.component';
-import { AudioContainerComponent } from './components/audio-container/audio-container.component';
-import { ImageContainerComponent } from './components/image-container/image-container.component';
-import { TextAreaInputComponent } from './components/utilities/elements/text-area-input/text-area-input.component';
-import { SelectInputComponent } from './components/utilities/elements/select-input/select-input.component';
+import { QuestionCardComponent } from './components/cards/question-card/question-card.component';
+import { DarkModeComponent } from './components/others/dark-mode/dark-mode.component';
+import { TwoWayInputModuleComponent } from './components/elements/two-way-input-module/two-way-input-module.component';
+import { HeadContainerComponent } from './components/containers/head-container/head-container.component';
+import { BodyContainerComponent } from './components/containers/body-container/body-container.component';
+import { InfoPageContainerComponent } from './components/containers/info-page-container/info-page-container.component';
+import { VideoContainerComponent } from './components/containers/video-container/video-container.component';
+import { AudioContainerComponent } from './components/containers/audio-container/audio-container.component';
+import { ImageContainerComponent } from './components/containers/image-container/image-container.component';
+import { TextAreaInputComponent } from './components/elements/text-area-input/text-area-input.component';
+import { SelectInputComponent } from './components/elements/select-input/select-input.component';
+import { CreateQuestionComponent } from './components/modals/create-question/create-question.component';
+import { UpdateQuestionComponent } from './components/modals/update-question/update-question.component';
+import { DeleteQuestionComponent } from './components/modals/delete-question/delete-question.component';
+import { QuestionCardSkeletonComponent } from './components/skeletons/question-card-skeleton/question-card-skeleton.component';
+import { ModalTemplateComponent } from './components/modals/modal-template/modal-template.component';
+import { FileInputComponent } from './components/elements/file-input/file-input.component';
 import {
     MAT_FORM_FIELD_DEFAULT_OPTIONS,
     MatFormFieldModule,
 } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ControlValueAccessorDirective } from './directives/control-value-accessor/control-value-accessor.directive';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
@@ -50,13 +56,8 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { SkeletonModule } from 'primeng/skeleton';
-import { CreateQuestionComponent } from './components/modals/create-question/create-question.component';
-import { UpdateQuestionComponent } from './components/modals/update-question/update-question.component';
-import { DeleteQuestionComponent } from './components/modals/delete-question/delete-question.component';
-import { QuestionCardSkeletonComponent } from './components/skeletons/question-card-skeleton/question-card-skeleton.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { ModalTemplateComponent } from './components/modals/modal-template/modal-template.component';
-import { FileInputComponent } from './components/utilities/elements/file-input/file-input.component';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
     declarations: [
@@ -117,6 +118,7 @@ import { FileInputComponent } from './components/utilities/elements/file-input/f
         DropdownModule,
         SkeletonModule,
         ProgressSpinnerModule,
+        CalendarModule,
     ],
     providers: [
         {
