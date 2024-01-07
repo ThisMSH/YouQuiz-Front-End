@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, tap, catchError, throwError } from 'rxjs';
-import { LevelDTO } from 'src/app/interfaces/level/level-dto';
-import { ListResponse } from 'src/app/interfaces/response/list-response';
+import { LevelRequest } from 'src/app/models/level/level-request';
+import { LevelResponse } from 'src/app/models/level/level-response';
+import { ListResponse } from 'src/app/models/response/list-response';
+import { Response } from 'src/app/models/response/response';
+import { SortOrder } from 'src/app/types/types';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -10,30 +13,43 @@ import { environment } from 'src/environments/environment.development';
 })
 export class LevelService {
     http = inject(HttpClient);
-    level = signal<LevelDTO | undefined>(undefined);
-    levels = signal<ListResponse<LevelDTO> | undefined>(undefined);
     url = environment.apiUrl;
 
-    getLevels({
-        title = '',
-        page = 1,
-        size = 24,
-        sortBy = 'id',
-        sortOrder = 'ASC',
-    } = {}): Observable<ListResponse<LevelDTO>> {
-        return this.http
-            .get<ListResponse<LevelDTO>>(
-                `${this.url}/levels?title=${title}&page=${page}&size=${size}&sortBy=${sortBy}&sortOrder=${sortOrder}`,
-            )
-            .pipe(
-                tap((res) => {
-                    if (res.status !== 200) {
-                        throw new Error(`An error occured: ${res.message}`);
-                    }
+    getLevel(id: number): Observable<Response<LevelResponse>> {
+        return this.http.get<Response<LevelResponse>>(
+            `${this.url}/levels/${id}`,
+        );
+    }
 
-                    this.levels.set(res);
-                }),
-                catchError((err) => throwError(() => err)),
-            );
+    getAllLevels(
+        size: number,
+        sortBy: string,
+        sortOrder: SortOrder,
+        page = 0,
+        title = '',
+    ): Observable<ListResponse<LevelResponse>> {
+        return this.http.get<ListResponse<LevelResponse>>(
+            `${this.url}/levels?title=${title}&page=${page}&size=${size}&sortBy=${sortBy}&sortOrder=${sortOrder}`,
+        );
+    }
+
+    createLevel(level: LevelRequest): Observable<Response<LevelResponse>> {
+        return this.http.post<Response<LevelResponse>>(
+            `${this.url}/levels/add`,
+            level,
+        );
+    }
+
+    updateLevel(level: LevelRequest): Observable<Response<LevelResponse>> {
+        return this.http.put<Response<LevelResponse>>(
+            `${this.url}/levels/update`,
+            level,
+        );
+    }
+
+    deleteLevel(id: number): Observable<Response<LevelResponse>> {
+        return this.http.delete<Response<LevelResponse>>(
+            `${this.url}/levels/${id}`,
+        );
     }
 }
