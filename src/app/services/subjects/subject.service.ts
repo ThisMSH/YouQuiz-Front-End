@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, signal } from '@angular/core';
-import { Observable, tap, catchError, throwError } from 'rxjs';
-import { ListResponse } from 'src/app/interfaces/response/list-response';
-import { SubjectDTO } from 'src/app/interfaces/subject/subject-dto';
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ListResponse } from 'src/app/models/response/list-response';
+import { Response } from 'src/app/models/response/response';
+import { SubjectRequest } from 'src/app/models/subject/subject-request';
+import { SubjectResponse } from 'src/app/models/subject/subject-response';
 import { SortOrder } from 'src/app/types/types';
 import { environment } from 'src/environments/environment.development';
 
@@ -11,30 +13,45 @@ import { environment } from 'src/environments/environment.development';
 })
 export class SubjectService {
     http = inject(HttpClient);
-    subject = signal<SubjectDTO | undefined>(undefined);
-    subjects = signal<ListResponse<SubjectDTO> | undefined>(undefined);
     url = environment.apiUrl;
 
-    getSubjects({
-        title = '',
-        page = 1,
-        size = 24,
-        sortBy = 'id',
-        sortOrder = 'ASC',
-    } = {}): Observable<ListResponse<SubjectDTO>> {
-        return this.http
-            .get<ListResponse<SubjectDTO>>(
-                `${this.url}/subjects?title=${title}&page=${page}&size=${size}&sortBy=${sortBy}&sortOrder=${sortOrder}`,
-            )
-            .pipe(
-                tap((res) => {
-                    if (res.status !== 200) {
-                        throw new Error(`An error occured: ${res.message}`);
-                    }
+    getSubject(id: number): Observable<SubjectResponse> {
+        return this.http.get<SubjectResponse>(`${this.url}/subjects/${id}`);
+    }
 
-                    this.subjects.set(res);
-                }),
-                catchError((err) => throwError(() => err)),
-            );
+    getAllSubjects(
+        size: number,
+        sortBy: string,
+        sortOrder: SortOrder,
+        page: number = 0,
+        title: string = '',
+    ): Observable<ListResponse<SubjectResponse>> {
+        return this.http.get<ListResponse<SubjectResponse>>(
+            `${this.url}/subjects?title=${title}&page=${page}&size=${size}&sortBy=${sortBy}&sortOrder=${sortOrder}`,
+        );
+    }
+
+    createSubject(
+        subject: SubjectRequest,
+    ): Observable<Response<SubjectResponse>> {
+        return this.http.post<Response<SubjectResponse>>(
+            `${this.url}/subjects/add`,
+            subject,
+        );
+    }
+
+    updateSubject(
+        subject: SubjectRequest,
+    ): Observable<Response<SubjectResponse>> {
+        return this.http.put<Response<SubjectResponse>>(
+            `${this.url}/subjects/update`,
+            subject,
+        );
+    }
+
+    deleteSubject(id: number): Observable<Response<SubjectResponse>> {
+        return this.http.delete<Response<SubjectResponse>>(
+            `${this.url}/subjects/${id}`,
+        );
     }
 }
