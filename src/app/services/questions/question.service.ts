@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, signal } from '@angular/core';
-import { Observable, catchError, tap, throwError } from 'rxjs';
-import { QuestionDTO } from 'src/app/interfaces/question/question-dto';
-import { QuestionRequest } from 'src/app/interfaces/question/question-request';
-import { ListResponse } from 'src/app/interfaces/response/list-response';
-import { Response } from 'src/app/interfaces/response/response';
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { QuestionRequest } from 'src/app/models/question/question-request';
+import { QuestionResponse } from 'src/app/models/question/question-response';
+import { ListResponse } from 'src/app/models/response/list-response';
+import { Response } from 'src/app/models/response/response';
+import { QuestionType, SortOrder } from 'src/app/types/types';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -12,52 +13,50 @@ import { environment } from 'src/environments/environment.development';
 })
 export class QuestionService {
     private http = inject(HttpClient);
-    question = signal<QuestionDTO | undefined>(undefined);
-    questions = signal<ListResponse<QuestionDTO> | undefined>(undefined);
     url = environment.apiUrl;
 
-    getQuestions(): Observable<ListResponse<QuestionDTO>> {
-        return this.http
-            .get<ListResponse<QuestionDTO>>(`${this.url}/questions`)
-            .pipe(
-                tap((res) => {
-                    if (res.status !== 200) {
-                        throw new Error(`An error occured: ${res.message}`);
-                    }
-
-                    this.questions.set(res);
-                }),
-                catchError((err) => throwError(() => err)),
-            );
+    getQuestion(id: number): Observable<Response<QuestionResponse>> {
+        return this.http.get<Response<QuestionResponse>>(
+            `${this.url}/questions/${id}`,
+        );
     }
 
-    getQuestion(id: number): Observable<Response<QuestionDTO>> {
-        return this.http
-            .get<Response<QuestionDTO>>(`${this.url}/questions/${id}`)
-            .pipe(
-                tap((res) => {
-                    if (res.status !== 200) {
-                        throw new Error(`An error occured: ${res.message}`);
-                    }
-
-                    this.question.set(res.data);
-                }),
-                catchError((err) => throwError(() => err)),
-            );
+    getQuestions(
+        size: number,
+        sortBy: string,
+        sortOrder: SortOrder,
+        page: number = 0,
+        question: string = '',
+        type: QuestionType | '' = '',
+        levelId: number = 0,
+        subjectId: number = 0,
+    ): Observable<ListResponse<QuestionResponse>> {
+        return this.http.get<ListResponse<QuestionResponse>>(
+            `${this.url}/questions?page=${page}&size=${size}&sortBy=${sortBy}&sortOrder=${sortOrder}&question=${question}&type=${type}&level=${levelId}&subject=${subjectId}`,
+        );
     }
 
-    createQuestion(question: QuestionRequest): Observable<Response<QuestionDTO>> {
-        return this.http
-            .post<Response<QuestionDTO>>(`${this.url}/questions/add`, question)
-            .pipe(
-                tap((res) => {
-                    if (res.status !== 201) {
-                        throw new Error(`An error occurred: ${res.message}`);
-                    }
+    createQuestion(
+        question: QuestionRequest,
+    ): Observable<Response<QuestionResponse>> {
+        return this.http.post<Response<QuestionResponse>>(
+            `${this.url}/questions/add`,
+            question,
+        );
+    }
 
-                    this.question.set(res.data);
-                }),
-                catchError((err) => throwError(() => err)),
-            );
+    updateQuestion(
+        question: QuestionRequest,
+    ): Observable<Response<QuestionResponse>> {
+        return this.http.put<Response<QuestionResponse>>(
+            `${this.url}/questions/update`,
+            question,
+        );
+    }
+
+    deleteQuestion(id: number): Observable<Response<QuestionResponse>> {
+        return this.http.delete<Response<QuestionResponse>>(
+            `${this.url}/questions/${id}`,
+        );
     }
 }
