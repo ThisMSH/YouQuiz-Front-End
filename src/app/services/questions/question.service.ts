@@ -21,7 +21,7 @@ export class QuestionService {
         );
     }
 
-    getQuestions(
+    getAllQuestions(
         size: number,
         sortBy: string,
         sortOrder: SortOrder,

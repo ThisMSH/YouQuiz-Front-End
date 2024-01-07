@@ -30,7 +30,7 @@ export class AnswerValidationService {
         );
     }
 
-    getAnswerValidationByQuestion(
+    getAnswerValidationsByQuestion(
         questionId: number,
     ): Observable<Response<AnswerValidationResponse[]>> {
         return this.http.get<Response<AnswerValidationResponse[]>>(
@@ -38,7 +38,7 @@ export class AnswerValidationService {
         );
     }
 
-    getAnswerValidationByAnswer(
+    getAnswerValidationsByAnswer(
         answerId: number,
     ): Observable<Response<AnswerValidationResponse[]>> {
         return this.http.get<Response<AnswerValidationResponse[]>>(
