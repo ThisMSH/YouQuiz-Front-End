@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -58,6 +58,10 @@ import { DropdownModule } from 'primeng/dropdown';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { CalendarModule } from 'primeng/calendar';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { QuestionModule } from './modules/question/question.module';
 
 @NgModule({
     declarations: [
@@ -119,6 +123,10 @@ import { CalendarModule } from 'primeng/calendar';
         SkeletonModule,
         ProgressSpinnerModule,
         CalendarModule,
+        StoreModule.forRoot({}, {}),
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+        EffectsModule.forRoot([]),
+        QuestionModule,
     ],
     providers: [
         {

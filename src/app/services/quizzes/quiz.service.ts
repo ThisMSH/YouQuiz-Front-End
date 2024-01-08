@@ -3,8 +3,8 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { QuizRequest } from 'src/app/models/quiz/quiz-request';
 import { QuizResponse } from 'src/app/models/quiz/quiz-response';
-import { ListResponse } from 'src/app/models/response/list-response';
-import { Response } from 'src/app/models/response/response';
+import { ListResponse } from 'src/app/interfaces/response/list-response';
+import { Response } from 'src/app/interfaces/response/response';
 import { SortOrder } from 'src/app/types/types';
 import { environment } from 'src/environments/environment.development';
 

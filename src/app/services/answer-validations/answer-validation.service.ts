@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AnswerValidationRequest } from 'src/app/models/answer-validation/answer-validation-request';
 import { AnswerValidationResponse } from 'src/app/models/answer-validation/answer-validation-response';
-import { Response } from 'src/app/models/response/response';
+import { Response } from 'src/app/interfaces/response/response';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({

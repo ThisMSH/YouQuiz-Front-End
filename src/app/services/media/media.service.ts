@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MediaResponse } from 'src/app/models/media/media-response';
-import { Response } from 'src/app/models/response/response';
+import { Response } from 'src/app/interfaces/response/response';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({

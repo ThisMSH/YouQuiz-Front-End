@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { QuizAssignmentRequest } from 'src/app/models/quiz-assignment/quiz-assignment-request';
 import { QuizAssignmentResponse } from 'src/app/models/quiz-assignment/quiz-assignment-response';
-import { Response } from 'src/app/models/response/response';
+import { Response } from 'src/app/interfaces/response/response';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({

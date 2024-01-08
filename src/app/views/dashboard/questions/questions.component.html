@@ -1,7 +1,7 @@
 <div>
     <div>
         question (search string), type (select string), level(select number),
-        subject(select number), sort(select sortBy & sortOrder)
+        subject(select number), sort(select sortBy & sortOrder). boolean : {{ questionsLoading() | async }}
     </div>
     <div
         class="p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl"
@@ -27,7 +27,7 @@
     <div
         class="grid grid-cols-2 gap-3 p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl"
     >
-        <ng-container *ngIf="!questionsLoading(); else loadingTemplate">
+        <ng-container *ngIf="!(questionsLoading() | async); else loadingTemplate">
             <app-question-card
                 *ngFor="let qs of questions()?.data?.content"
                 [questionObj]="qs"

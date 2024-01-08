@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, take } from 'rxjs';
-import { QuestionDTO } from 'src/app/interfaces/question/question-dto';
 import { Response } from 'src/app/interfaces/response/response';
 import { QuestionService } from 'src/app/services/questions/question.service';
 import { MessageService } from 'primeng/api';
+import { QuestionResponse } from 'src/app/models/question/question-response';
 
 @Component({
     selector: 'app-question-info',
@@ -18,7 +18,7 @@ export class QuestionInfoComponent implements OnInit, OnDestroy {
     private messageService = inject(MessageService);
     private paramSub!: Subscription;
     id = signal<number>(0);
-    question = signal<Response<QuestionDTO> | null>(null);
+    question = signal<Response<QuestionResponse> | null>(null);
     questionLoading = signal<boolean>(true);
 
     getQuestion(): void {

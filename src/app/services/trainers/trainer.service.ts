@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListResponse } from 'src/app/models/response/list-response';
-import { Response } from 'src/app/models/response/response';
+import { ListResponse } from 'src/app/interfaces/response/list-response';
+import { Response } from 'src/app/interfaces/response/response';
 import { TrainerRequest } from 'src/app/models/trainer/trainer-request';
 import { TrainerResponse } from 'src/app/models/trainer/trainer-response';
 import { SortOrder } from 'src/app/types/types';

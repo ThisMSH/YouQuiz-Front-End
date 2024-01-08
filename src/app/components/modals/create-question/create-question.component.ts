@@ -9,9 +9,8 @@ import {
 import { FormBuilder, Validators, FormArray, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { take } from 'rxjs';
-import { Question } from 'src/app/interfaces/question/question';
-import { QuestionDTO } from 'src/app/interfaces/question/question-dto';
-import { QuestionRequest } from 'src/app/interfaces/question/question-request';
+import { Question } from 'src/app/models/question/question';
+import { QuestionRequest } from 'src/app/models/question/question-request';
 import { Response } from 'src/app/interfaces/response/response';
 import { LevelService } from 'src/app/services/levels/level.service';
 import { MediaService } from 'src/app/services/media/media.service';
@@ -36,7 +35,7 @@ export class CreateQuestionComponent implements OnInit {
     levelsLoading = signal<boolean>(true);
     isLoading = signal<boolean>(false);
     question = signal<Response<Question> | undefined>(undefined);
-    showModal: boolean = true;
+    showModal: boolean = false;
     selectedNodes: any = '';
     questionTypeOptions: TypeOption<QuestionType>[] = [
         { name: 'Single Answer', code: 'SINGLE' },
@@ -136,63 +135,63 @@ export class CreateQuestionComponent implements OnInit {
     getAllSubjects(): void {
         this.subjectsLoading.set(true);
 
-        this.subjectService
-            .getSubjects({ size: 999 })
-            .pipe(take(1))
-            .subscribe({
-                next: (s) => {
-                    s.data.content.forEach((sbj) => {
-                        this.subjectOptions.push({
-                            name: sbj.title,
-                            code: sbj.id.toString(),
-                        });
-                    });
-                },
-                error: (err) => {
-                    const error: string =
-                        err.error.message || 'An unknown error occurred.';
+        // this.subjectService
+        //     .getSubjects({ size: 999 })
+        //     .pipe(take(1))
+        //     .subscribe({
+        //         next: (s) => {
+        //             s.data.content.forEach((sbj) => {
+        //                 this.subjectOptions.push({
+        //                     name: sbj.title,
+        //                     code: sbj.id.toString(),
+        //                 });
+        //             });
+        //         },
+        //         error: (err) => {
+        //             const error: string =
+        //                 err.error.message || 'An unknown error occurred.';
 
-                    this.messageService.add({
-                        severity: 'error',
-                        summary: 'Error occured',
-                        detail: error,
-                    });
-                },
-                complete: () => {
-                    this.subjectsLoading.set(false);
-                },
-            });
+        //             this.messageService.add({
+        //                 severity: 'error',
+        //                 summary: 'Error occured',
+        //                 detail: error,
+        //             });
+        //         },
+        //         complete: () => {
+        //             this.subjectsLoading.set(false);
+        //         },
+        //     });
     }
 
     getAllLevels(): void {
         this.levelsLoading.set(true);
 
-        this.levelService
-            .getLevels({ size: 999 })
-            .pipe(take(1))
-            .subscribe({
-                next: (l) => {
-                    l.data.content.forEach((lvl) => {
-                        this.levelOptions.push({
-                            name: lvl.title,
-                            code: lvl.id.toString(),
-                        });
-                    });
-                },
-                error: (err) => {
-                    const error: string =
-                        err.error.message || 'An unknown error occurred.';
+        // this.levelService
+        //     .getLevels({ size: 999 })
+        //     .pipe(take(1))
+        //     .subscribe({
+        //         next: (l) => {
+        //             l.data.content.forEach((lvl) => {
+        //                 this.levelOptions.push({
+        //                     name: lvl.title,
+        //                     code: lvl.id.toString(),
+        //                 });
+        //             });
+        //         },
+        //         error: (err) => {
+        //             const error: string =
+        //                 err.error.message || 'An unknown error occurred.';
 
-                    this.messageService.add({
-                        severity: 'error',
-                        summary: 'Error occured',
-                        detail: error,
-                    });
-                },
-                complete: () => {
-                    this.levelsLoading.set(false);
-                },
-            });
+        //             this.messageService.add({
+        //                 severity: 'error',
+        //                 summary: 'Error occured',
+        //                 detail: error,
+        //             });
+        //         },
+        //         complete: () => {
+        //             this.levelsLoading.set(false);
+        //         },
+        //     });
     }
 
     toFormData(med: FormArray, id: number): FormData[] {
@@ -247,7 +246,7 @@ export class CreateQuestionComponent implements OnInit {
                         summary: 'Question created!',
                         detail: this.question()?.message,
                     });
-                }
+                },
             });
     }
 

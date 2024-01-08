@@ -101,7 +101,7 @@
                     <div
                         *ngFor="
                             let ans of question()?.data
-                                ?.answerValidationsWithParent;
+                                ?.answerValidations;
                             index as i
                         "
                         class="p-2 flex justify-between items-center gap-x-4"
@@ -110,10 +110,10 @@
                             <a
                                 class="line-clamp-1"
                                 [routerLink]="[
-                                    '/dashboard/answers/' + ans.answer.id
+                                    '/dashboard/answers/' + ans.answer?.id
                                 ]"
                             >
-                                {{ i + 1 }} - {{ ans.answer.answer }}
+                                {{ i + 1 }} - {{ ans.answer?.answer }}
                             </a>
                         </p>
                         <p-tag
