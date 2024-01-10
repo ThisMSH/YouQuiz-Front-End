@@ -1,40 +1,39 @@
 <div>
     <div>
         question (search string), type (select string), level(select number),
-        subject(select number), sort(select sortBy & sortOrder). boolean : {{ questionsLoading() | async }}
+        subject(select number), sort(select sortBy & sortOrder).
     </div>
-    <div
-        class="p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl"
-    >
-        <div class="flex justify-between items-center">
-            <div>
-                <button type="button">Filters</button>
-            </div>
-            <div>
-                <app-two-way-input-module
-                    inputId="search-question"
-                    label="Search"
-                    iconPosition="right"
-                    icon="pi pi-search"
-                ></app-two-way-input-module>
-            </div>
-            <div>
-                <app-create-question (creationCompleted)="getAllQuestions()"></app-create-question>
-            </div>
+    <app-dashboard-filters [(search)]="search">
+        <div id="modal">
+            <app-create-question
+                (creationCompleted)="getAllQuestions()"
+            ></app-create-question>
         </div>
-        <div>test</div>
-    </div>
+        <div id="filters" class="overflow-hidden">
+            <pre>
+                text-sky-100
+                test text   gskjdg sdl sjdgsf
+                 ldkfjg sdflk jslfmkjsdml ksj
+                            mdfjglksdfj
+                            {{ search }}
+            </pre>
+        </div>
+    </app-dashboard-filters>
     <div
         class="grid grid-cols-2 gap-3 p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl"
     >
-        <ng-container *ngIf="!(questionsLoading() | async); else loadingTemplate">
+        <ng-container
+            *ngIf="!(questionsLoading() | async); else loadingTemplate"
+        >
             <app-question-card
                 *ngFor="let qs of questions()?.data?.content"
                 [questionObj]="qs"
             ></app-question-card>
         </ng-container>
         <ng-template #loadingTemplate>
-            <app-question-card-skeleton *ngFor="let i of range()"></app-question-card-skeleton>
+            <app-question-card-skeleton
+                *ngFor="let i of range()"
+            ></app-question-card-skeleton>
         </ng-template>
     </div>
 </div>

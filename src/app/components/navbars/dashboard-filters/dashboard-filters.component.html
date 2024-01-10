@@ -1,0 +1,29 @@
+<app-general-container
+    customClass="p-4"
+>
+    <div class="flex justify-between items-center">
+        <div>
+            <app-default-button
+                label="Filters"
+                size="small"
+                icon="pi pi-filter"
+                bgStyle="indigo"
+                (onClickEvent)="openFilters()"
+            ></app-default-button>
+        </div>
+        <div class="pt-2">
+            <app-two-way-input-module
+                [bindVal]="search"
+                (bindValChange)="onSearchChange($event)"
+                inputId="search"
+                label="Search"
+                iconPosition="right"
+                icon="pi pi-search"
+            ></app-two-way-input-module>
+        </div>
+        <ng-content select="#modal"></ng-content>
+    </div>
+    <div class="grid grid-rows-[0fr] transition-all duration-300" #filtersContainer>
+        <ng-content select="#filters"></ng-content>
+    </div>
+</app-general-container>

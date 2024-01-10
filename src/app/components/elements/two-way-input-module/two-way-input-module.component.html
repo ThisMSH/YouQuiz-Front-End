@@ -11,8 +11,8 @@
             pInputText
             class="w-full"
             [id]="inputId"
-            [(ngModel)]="bindVal"
-            (ngModelChange)="onBindValChange()"
+            [ngModel]="bindVal"
+            (ngModelChange)="onBindValChange($event)"
         />
         <label [htmlFor]="inputId">
             {{ label }}

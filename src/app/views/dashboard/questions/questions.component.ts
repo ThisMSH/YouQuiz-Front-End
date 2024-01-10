@@ -28,6 +28,7 @@ export class QuestionsComponent implements OnInit {
     private messageService = inject(MessageService);
     questions = signal<ListResponse<QuestionResponse> | null>(null);
     questionsLoading = signal<Observable<boolean>>(of(true));
+    search: string = 'helloe';
 
     constructor() {
         this.questionsLoading.set(this.store.select(isLoadingSelector));
@@ -67,5 +68,7 @@ export class QuestionsComponent implements OnInit {
                 params: { size: 24, sortBy: 'id', sortOrder: 'ASC', page: 0 },
             }),
         );
+        console.log(this.search);
+
     }
 }

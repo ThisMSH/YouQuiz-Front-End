@@ -20,10 +20,9 @@ export class TwoWayInputModuleComponent
     @Input() icon: string = '';
     @Input() iconPosition: IconPositionType = '';
     @Output() bindValChange = new EventEmitter<string>();
-    @Output() onChangeFn = new EventEmitter<void>();
 
-    onBindValChange(): void {
+    onBindValChange(evt: string): void {
+        this.bindVal = evt;
         this.bindValChange.emit(this.bindVal);
-        this.onChangeFn.emit();
     }
 }

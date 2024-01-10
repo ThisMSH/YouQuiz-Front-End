@@ -65,6 +65,7 @@ import { QuestionModule } from './modules/question/question.module';
 import { BreadcrumbComponent } from './components/others/breadcrumb/breadcrumb.component';
 import { GeneralContainerComponent } from './components/containers/general-container/general-container.component';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { DashboardFiltersComponent } from './components/navbars/dashboard-filters/dashboard-filters.component';
 
 @NgModule({
     declarations: [
@@ -106,6 +107,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
         FileInputComponent,
         BreadcrumbComponent,
         GeneralContainerComponent,
+        DashboardFiltersComponent,
     ],
     imports: [
         BrowserModule,
