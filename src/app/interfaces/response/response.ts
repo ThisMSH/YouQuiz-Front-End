@@ -1,4 +1,4 @@
-export interface Response<T> {
+export interface Response<T = null> {
     data?: T;
     cause?: object;
     errors?: Record<string, string>;

@@ -15,5 +15,5 @@ export const errorSelector = createSelector(
 
 export const getAllQuestionsSelector = createSelector(
     selectFeature,
-    (state) => state.response,
+    (state) => state.responseList,
 );

@@ -28,7 +28,7 @@ export const getAllQuestionsSucceed = createAction(
 
 export const getAllQuestionsFailed = createAction(
     '[Question] Get All Questions Failed',
-    props<{ error: string }>(),
+    props<{ error: Response }>(),
 );
 
 export const getQuestion = createAction(
@@ -43,7 +43,7 @@ export const getQuestionSucceed = createAction(
 
 export const getQuestionFailed = createAction(
     '[Question] Get Question Failed',
-    props<{ error: string }>(),
+    props<{ error: Response }>(),
 );
 
 export const createQuestion = createAction(
@@ -58,7 +58,7 @@ export const createQuestionSucceed = createAction(
 
 export const createQuestionFailed = createAction(
     '[Question] Create Question Failed',
-    props<{ error: string }>(),
+    props<{ error: Response }>(),
 );
 
 export const updateQuestion = createAction(
@@ -73,7 +73,7 @@ export const updateQuestionSucceed = createAction(
 
 export const updateQuestionFailed = createAction(
     '[Question] Update Question Failed',
-    props<{ error: string }>(),
+    props<{ error: Response }>(),
 );
 
 export const deleteQuestion = createAction(
@@ -83,9 +83,10 @@ export const deleteQuestion = createAction(
 
 export const deleteQuestionSucceed = createAction(
     '[Question] Delete Question Successfully',
+    props<Response<QuestionResponse>>(),
 );
 
 export const deleteQuestionFailed = createAction(
     '[Question] Delete Question Failed',
-    props<{ error: string }>(),
+    props<{ error: Response }>(),
 );

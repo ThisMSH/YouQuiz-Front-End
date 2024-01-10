@@ -36,8 +36,7 @@ export class QuestionEffects {
                         catchError((error) =>
                             of(
                                 QuestionActions.getAllQuestionsFailed({
-
-                                    error: error.message,
+                                    error: error.error,
                                 }),
                             ),
                         ),
