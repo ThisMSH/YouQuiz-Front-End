@@ -62,6 +62,9 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { QuestionModule } from './modules/question/question.module';
+import { BreadcrumbComponent } from './components/others/breadcrumb/breadcrumb.component';
+import { GeneralContainerComponent } from './components/containers/general-container/general-container.component';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 @NgModule({
     declarations: [
@@ -101,6 +104,8 @@ import { QuestionModule } from './modules/question/question.module';
         QuestionCardSkeletonComponent,
         ModalTemplateComponent,
         FileInputComponent,
+        BreadcrumbComponent,
+        GeneralContainerComponent,
     ],
     imports: [
         BrowserModule,
@@ -123,6 +128,7 @@ import { QuestionModule } from './modules/question/question.module';
         SkeletonModule,
         ProgressSpinnerModule,
         CalendarModule,
+        BreadcrumbModule,
         StoreModule.forRoot({}, {}),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
         EffectsModule.forRoot([]),

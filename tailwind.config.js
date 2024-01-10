@@ -25,10 +25,20 @@ module.exports = {
                 'white-2': '2px rgb(255 255 255)',
                 'black-1': '1px rgb(0 0 0)',
                 'black-2': '2px rgb(0 0 0)',
-                'zinc-600-0\.5': '.5px rgb(82 82 91)',
-                'zinc-500-0\.5': '.5px rgb(113 113 122)',
-                'zinc-400-0\.5': '.5px rgb(161 161 170)',
-                'zinc-300-0\.5': '.5px rgb(212 212 216)'
+                'indigo-100-1': '1px rgb(224 231 255)',
+                'indigo-200-1': '1px rgb(191 204 255)',
+                'indigo-300-1': '1px rgb(165 180 252)',
+                'indigo-400-1': '1px rgb(129 140 248)',
+                'indigo-500-1': '1px rgb(99 102 241)',
+                'indigo-600-1': '1px rgb(79 70 229)',
+                'indigo-700-1': '1px rgb(67 56 202)',
+                'indigo-800-1': '1px rgb(55 48 163)',
+                'zinc-300-0.5': '.5px rgb(212 212 216)',
+                'zinc-400-0.5': '.5px rgb(161 161 170)',
+                'zinc-500-0.5': '.5px rgb(113 113 122)',
+                'zinc-600-0.5': '.5px rgb(82 82 91)',
+                'zinc-700-0.5': '.5px rgb(63 63 70)',
+                'zinc-800-0.5': '.5px rgb(39 39 42)',
             },
             textShadow: {
                 'zinc-900-1': '0 0 1px rgb(24 24 27)',
@@ -46,7 +56,7 @@ module.exports = {
                 'zinc-100-20': '0 0 20px rgb(244 244 245)',
                 'zinc-100-25': '0 0 25px rgb(244 244 245)',
                 'zinc-100-30': '0 0 30px rgb(244 244 245)',
-            }
+            },
         },
     },
     plugins: [
@@ -60,29 +70,25 @@ module.exports = {
             addVariant('children', '& *');
             addVariant('children-hover', '& *:hover');
         }),
-        plugin(function ({matchUtilities, theme}) {
+        plugin(function ({ matchUtilities, theme }) {
             matchUtilities(
                 {
                     'text-stroke': (value) => ({
                         '-webkit-text-stroke': value,
-                    })
+                    }),
                 },
-                { values:
-                    theme('textStroke')
-                }
-            )
+                { values: theme('textStroke') },
+            );
         }),
-        plugin(function ({matchUtilities, theme}) {
+        plugin(function ({ matchUtilities, theme }) {
             matchUtilities(
                 {
                     'text-shadow': (value) => ({
                         textShadow: value,
-                    })
+                    }),
                 },
-                { values:
-                    theme('textShadow')
-                }
-            )
-        })
+                { values: theme('textShadow') },
+            );
+        }),
     ],
 };

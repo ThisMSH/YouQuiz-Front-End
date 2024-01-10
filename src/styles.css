@@ -29,6 +29,10 @@
     @apply text-black bg-indigo-300
 }
 
+.p-menuitem-text, .p-menuitem-icon {
+    @apply text-inherit;
+}
+
 @import url('tailwindcss/base.css') layer(tw-base);
 /* @tailwind base; */
 @tailwind components;

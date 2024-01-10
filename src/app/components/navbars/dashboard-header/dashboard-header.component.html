@@ -1,1 +1,11 @@
-<p>dashboard-header works!</p>
+<header>
+    <app-general-container customClass="p-4">
+        <div class="flex justify-between items-center">
+            <p-breadcrumb class="max-w-full" [model]="items" [home]="home" homeAriaLabel="Home" styleClass="bg-zinc-100 dark:bg-zinc-900 border-0"></p-breadcrumb>
+            <app-dark-mode></app-dark-mode>
+        </div>
+        <div>
+            <h1 class="p-4 text-5xl font-black text-transparent bg-indigo-700 dark:bg-indigo-400 bg-clip-text text-shadow-zinc-100-10 dark:text-shadow-zinc-900-10 text-stroke-indigo-500-1 dark:text-stroke-indigo-200-1 line-clamp-1">{{ label }}</h1>
+        </div>
+    </app-general-container>
+</header>
