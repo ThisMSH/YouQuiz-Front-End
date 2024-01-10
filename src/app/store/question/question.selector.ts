@@ -8,12 +8,12 @@ export const isLoadingSelector = createSelector(
     (state) => state.isLoading,
 );
 
-export const getAllQuestionsSelector = createSelector(
-    selectFeature,
-    (state) => state.response,
-);
-
 export const errorSelector = createSelector(
     selectFeature,
     (state) => state.error,
+);
+
+export const getAllQuestionsSelector = createSelector(
+    selectFeature,
+    (state) => state.response,
 );

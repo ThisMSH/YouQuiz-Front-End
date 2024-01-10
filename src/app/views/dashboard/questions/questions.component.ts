@@ -31,11 +31,6 @@ export class QuestionsComponent implements OnInit {
 
     constructor() {
         this.questionsLoading.set(this.store.select(isLoadingSelector));
-        this.questionsLoading().subscribe({
-            next: (isLoading) => {
-                console.log(isLoading);
-            },
-        });
     }
 
     getAllQuestions(): void {
@@ -69,14 +64,8 @@ export class QuestionsComponent implements OnInit {
     ngOnInit(): void {
         this.store.dispatch(
             QuestionActions.getAllQuestions({
-                params: { size: 10, sortBy: 'id', sortOrder: 'ASC', page: 0 },
+                params: { size: 24, sortBy: 'id', sortOrder: 'ASC', page: 0 },
             }),
         );
-
-        this.questionService.getAllQuestions(10, 'id', 'ASC', 0).subscribe({
-            next: (q) => {
-                console.log(q);
-            },
-        });
     }
 }
