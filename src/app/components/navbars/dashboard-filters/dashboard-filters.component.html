@@ -1,6 +1,4 @@
-<app-general-container
-    customClass="p-4"
->
+<app-general-container customClass="p-4">
     <div class="flex justify-between items-center">
         <div>
             <app-default-button
@@ -23,7 +21,12 @@
         </div>
         <ng-content select="#modal"></ng-content>
     </div>
-    <div class="grid grid-rows-[0fr] transition-all duration-300" #filtersContainer>
-        <ng-content select="#filters"></ng-content>
+    <div
+        class="grid grid-rows-[0fr] transition-all duration-300 child:overflow-hidden"
+        #filtersContainer
+    >
+        <div class="child:mt-6">
+            <ng-content select="#filters"></ng-content>
+        </div>
     </div>
 </app-general-container>

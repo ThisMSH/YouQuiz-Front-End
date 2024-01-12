@@ -66,6 +66,8 @@ import { BreadcrumbComponent } from './components/others/breadcrumb/breadcrumb.c
 import { GeneralContainerComponent } from './components/containers/general-container/general-container.component';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { DashboardFiltersComponent } from './components/navbars/dashboard-filters/dashboard-filters.component';
+import { TwoWaySelectInputComponent } from './components/elements/two-way-select-input/two-way-select-input.component';
+import { PrestigeButtonComponent } from './components/elements/prestige-button/prestige-button.component';
 
 @NgModule({
     declarations: [
@@ -108,6 +110,8 @@ import { DashboardFiltersComponent } from './components/navbars/dashboard-filter
         BreadcrumbComponent,
         GeneralContainerComponent,
         DashboardFiltersComponent,
+        TwoWaySelectInputComponent,
+        PrestigeButtonComponent,
     ],
     imports: [
         BrowserModule,

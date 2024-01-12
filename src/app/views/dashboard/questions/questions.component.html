@@ -9,14 +9,11 @@
                 (creationCompleted)="getAllQuestions()"
             ></app-create-question>
         </div>
-        <div id="filters" class="overflow-hidden">
-            <pre>
-                text-sky-100
-                test text   gskjdg sdl sjdgsf
-                 ldkfjg sdflk jslfmkjsdml ksj
-                            mdfjglksdfj
-                            {{ search }}
-            </pre>
+        <div id="filters" class="grid grid-cols-4 gap-3">
+            <app-two-way-select-input label="Question type"></app-two-way-select-input>
+            <app-two-way-select-input label="Level"></app-two-way-select-input>
+            <app-two-way-select-input label="Subject"></app-two-way-select-input>
+            <app-two-way-select-input label="Sort by"></app-two-way-select-input>
         </div>
     </app-dashboard-filters>
     <div
