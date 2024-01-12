@@ -8,6 +8,7 @@ import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@
 export class DashboardFiltersComponent {
     @ViewChild('filtersContainer') filetrsContainer!: ElementRef;
     @Input() search!: string;
+    @Input() customClass: string = 'relative p-6 sticky top-4';
     @Output() searchChange = new EventEmitter<string>();
 
     openFilters(): void {

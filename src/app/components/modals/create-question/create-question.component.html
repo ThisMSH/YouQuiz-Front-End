@@ -1,10 +1,9 @@
-<button
-    class="px-6 py-3 bg-zinc-700 text-zinc-50 border rounded-md"
-    (click)="toggleModal()"
-    type="button"
->
-    Add question
-</button>
+<app-prestige-button
+    (onClick)="toggleModal()"
+    label="Add question"
+    icon="pi pi-plus"
+    btnType="button"
+></app-prestige-button>
 <p-dialog
     header="Add a new question"
     [(visible)]="showModal"
@@ -108,20 +107,22 @@
                 </div>
             </div>
         </div>
-        <div class="pt-6 flex justify-center items-center gap-8 border-t border-zinc-500">
+        <div
+            class="pt-6 flex justify-center items-center gap-8 border-t border-zinc-500"
+        >
             <app-default-button
-                    label="Submit"
-                    [rounded]="true"
-                    bgStyle="indigo"
-                    [loading]="isLoading()"
-                ></app-default-button>
-                <app-default-button
-                    label="Cancel"
-                    [rounded]="true"
-                    type="button"
-                    bgStyle="zinc"
-                    (onClickEvent)="toggleModal()"
-                ></app-default-button>
+                label="Submit"
+                [rounded]="true"
+                bgStyle="indigo"
+                [loading]="isLoading()"
+            ></app-default-button>
+            <app-default-button
+                label="Cancel"
+                [rounded]="true"
+                type="button"
+                bgStyle="zinc"
+                (onClickEvent)="toggleModal()"
+            ></app-default-button>
         </div>
     </form>
 </p-dialog>

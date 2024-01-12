@@ -1,1 +1,23 @@
-<p>prestige-button works!</p>
+<button
+    [class]="customClass"
+    class="group relative bg-zinc-50 dark:bg-zinc-900 rounded-full before:absolute before:w-5 before:h-5 before:top-1/2 before:left-1 before:rounded-full before:-translate-x-1/2 before:-translate-y-1/2 before:shadow-prestige-btn hover:before:left-1/2 hover:before:w-11/12 hover:before:h-3/4 after:absolute after:w-5 after:h-5 after:top-1/2 after:right-1 after:rounded-full after:translate-x-1/2 after:-translate-y-1/2 after:shadow-prestige-btn hover:after:right-1/2 hover:after:w-11/12 hover:after:h-3/4"
+    [ngClass]="{
+        'before:bg-indigo-500 before:shadow-indigo-500 after:bg-indigo-500 after:shadow-indigo-500':
+            bgStyle == 'indigo',
+        'before:bg-sky-500 before:shadow-sky-500 after:bg-sky-500 after:shadow-sky-500':
+            bgStyle == 'sky',
+        'before:bg-red-500 before:shadow-red-500 after:bg-red-500 after:shadow-red-500':
+            bgStyle == 'red'
+    }"
+    (click)="btnClicked()"
+    [type]="btnType"
+>
+    <div
+        class="relative px-6 py-3 text-lg text-zinc-950 dark:text-zinc-50 flex items-center gap-2 border-t border-b border-zinc-950/10 dark:border-zinc-50/10 rounded-full z-[1] backdrop-blur-lg overflow-hidden before:absolute before:w-1/2 before:h-full before:top-0 before:left-0 before:bg-gradient-to-l before:from-zinc-500/25 before:dark:from-zinc-50/25 before:to-transparent before:skew-x-[30deg] before:transition-all before:duration-300 before:delay-200 group-hover:before:-translate-x-[120%]"
+    >
+        <span *ngIf="icon" [ngClass]="[icon, iconClass ?? '']"></span>
+        <p class="" [class]="labelClass">
+            {{ label }}
+        </p>
+    </div>
+</button>

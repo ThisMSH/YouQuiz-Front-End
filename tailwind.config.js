@@ -7,6 +7,17 @@ module.exports = {
     content: ['./src/**/*.{html,ts}'],
     theme: {
         extend: {
+            boxShadow: {
+                'centered-5-5': '0 0 5px 5px rgba(0, 0, 0, 0.3)',
+                'centered-7-5': '0 0 7px 5px rgba(0, 0, 0, 0.3)',
+                'centered-10-5': '0 0 10px 5px rgba(0, 0, 0, 0.3)',
+                'prestige-btn': [
+                    '0 0 5px rgba(0, 0, 0, 0.3)',
+                    '0 0 15px rgba(0, 0, 0, 0.3)',
+                    '0 0 30px rgba(0, 0, 0, 0.3)',
+                    '0 0 60px rgba(0, 0, 0, 0.3)',
+                ],
+            },
             dropShadow: {
                 'white-sm': ['0 2px 4px rgb(255 255 255)'],
                 'black-sm': ['0 2px 4px rgb(0 0 0)'],

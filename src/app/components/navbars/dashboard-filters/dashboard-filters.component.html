@@ -1,5 +1,6 @@
-<app-general-container customClass="p-4">
+<app-general-container [customClass]="customClass" bgStyle="bg-zinc-100/10 dark:bg-zinc-900/10">
     <div class="flex justify-between items-center">
+        <div class="absolute backdrop-blur rounded-xl inset-0"></div>
         <div>
             <app-default-button
                 label="Filters"

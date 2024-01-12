@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class GeneralContainerComponent {
     @Input() customClass: string = '';
+    @Input() bgStyle: string = 'bg-zinc-100 dark:bg-zinc-900';
 }

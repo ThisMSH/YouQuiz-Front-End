@@ -1,0 +1,9 @@
+button::before,
+button::after {
+    transition: all 0.3s, left 0.2s 0.3s, right 0.2s 0.3s;
+}
+
+button:hover::before,
+button:hover::after {
+    transition: all 0.3s 0.2s, left 0.2s, right 0.2s;
+}
