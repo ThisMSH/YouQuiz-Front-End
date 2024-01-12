@@ -28,7 +28,7 @@ export class QuestionsComponent implements OnInit {
     private messageService = inject(MessageService);
     questions = signal<ListResponse<QuestionResponse> | null>(null);
     questionsLoading = signal<Observable<boolean>>(of(true));
-    search: string = 'helloe';
+    search: string = '';
 
     constructor() {
         this.questionsLoading.set(this.store.select(isLoadingSelector));

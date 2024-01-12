@@ -33,6 +33,10 @@
     @apply text-inherit;
 }
 
+/* .p-inputtext {
+    @apply bg-zinc-400;
+} */
+
 @import url('tailwindcss/base.css') layer(tw-base);
 /* @tailwind base; */
 @tailwind components;

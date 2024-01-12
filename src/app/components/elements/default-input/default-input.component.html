@@ -8,28 +8,28 @@
     >
         <i *ngIf="icon" [class]="icon"></i>
         <input
-            #defaultInput
             pInputText
-            class="w-full bg-zinc-200 text-zinc-950 dark:bg-zinc-700 dark:text-zinc-50 border border-zinc-400"
+            class="w-full bg-zinc-200 text-zinc-950 dark:bg-zinc-800 dark:text-zinc-50 border border-zinc-500"
             [id]="inputId"
             [formControl]="control()"
             [required]="isRequired()"
-            (blur)="onBlur()"
         />
         <label
-            #labelElement
-            class="label"
             [htmlFor]="inputId"
-            [ngClass]="{ required: isRequired() }"
+            [ngClass]="{
+                required: isRequired(),
+                label: control().valid || control().untouched
+            }"
         >
             {{ label }}
         </label>
     </div>
-    <div #errorsContainer class="hidden" *ngIf="errors && control().invalid">
+    <div *ngIf="control().touched && control().invalid">
         <small
             *ngFor="let err of control().errors | keyvalue"
             class="block text-red-600 dark:text-red-400"
-            >{{ errors[err.key] }}</small
         >
+            {{ errors[err.key] }}
+        </small>
     </div>
 </div>

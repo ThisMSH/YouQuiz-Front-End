@@ -6,15 +6,15 @@
             'p-input-icon-right': iconPosition === 'right'
         }"
     >
-        <i *ngIf="icon" [class]="icon"></i>
+        <i *ngIf="icon" [class]="icon" class="text-zinc-900 dark:text-zinc-100"></i>
         <input
             pInputText
-            class="w-full"
+            class="w-full text-zinc-950 dark:text-zinc-50 bg-zinc-200 dark:bg-zinc-800 border border-zinc-500"
             [id]="inputId"
             [ngModel]="bindVal"
             (ngModelChange)="onBindValChange($event)"
         />
-        <label [htmlFor]="inputId">
+        <label [htmlFor]="inputId" class="text-zinc-900 dark:text-zinc-100">
             {{ label }}
         </label>
     </div>

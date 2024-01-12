@@ -16,7 +16,6 @@ import { ControlValueAccessorDirective } from 'src/app/directives/control-value-
 })
 export class FileInputComponent<T>
     extends ControlValueAccessorDirective<T>
-    implements AfterViewInit
 {
     @ViewChild('labelContainer') inputEle!: ElementRef;
     @ViewChild('errorsContainer') errDiv!: ElementRef;
@@ -61,8 +60,5 @@ export class FileInputComponent<T>
 
     onFileChange(e: any) {
         this.fileChange.emit(e);
-    }
-
-    ngAfterViewInit(): void {
     }
 }

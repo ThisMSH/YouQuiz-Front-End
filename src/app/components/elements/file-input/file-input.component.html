@@ -41,7 +41,8 @@
         <small
             *ngFor="let err of control().errors | keyvalue"
             class="block text-red-600 dark:text-red-400"
-            >{{ errors[err.key] }}</small
         >
+            {{ errors[err.key] }}
+        </small>
     </div>
 </div>

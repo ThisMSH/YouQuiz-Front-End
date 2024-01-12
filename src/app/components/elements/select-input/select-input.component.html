@@ -1,17 +1,16 @@
 <div class="flex flex-col gap-2">
-    <div #selectInput class="p-float-label">
+    <div class="p-float-label">
         <p-dropdown
             [options]="options"
             optionLabel="name"
             optionValue="code"
-            styleClass="w-full text-zinc-950 dark:text-zinc-50 bg-zinc-200 dark:bg-zinc-700 border border-zinc-400"
+            styleClass="w-full text-zinc-950 dark:text-zinc-50 bg-zinc-200 dark:bg-zinc-800 border border-zinc-500"
             [filter]="filter"
             filterBy="name"
             [showClear]="showClear"
             [inputId]="inputId"
             [formControl]="control()"
             [required]="isRequired()"
-            (onHide)="onBlur()"
         >
             <ng-template pTemplate="selectedItem">
                 <div
@@ -28,19 +27,21 @@
             </ng-template>
         </p-dropdown>
         <label
-            #labelElement
-            class="label"
             [htmlFor]="inputId"
-            [ngClass]="{ required: isRequired() }"
+            [ngClass]="{
+                required: isRequired(),
+                label: control().valid || control().untouched
+            }"
         >
             {{ label }}
         </label>
     </div>
-    <div #errorsContainer class="hidden" *ngIf="errors && control().invalid">
+    <div *ngIf="control().touched && control().invalid">
         <small
             *ngFor="let err of control().errors | keyvalue"
             class="block text-red-600 dark:text-red-400"
-            >{{ errors[err.key] }}</small
         >
+            {{ errors[err.key] }}
+        </small>
     </div>
 </div>
